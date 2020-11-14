@@ -13,6 +13,11 @@ namespace CheatAndCoop
 
         public Player(IStrategy initialStrategy) => Strategy = initialStrategy;
 
+        public void ChangeStrategy(IStrategy strategy)
+        {
+            Strategy = strategy;
+        }
+
         public Choice GetNextChoice(IEnumerable<Choice> ownChoices, IEnumerable<Choice> opponentChoices)
         {
             return Strategy.GetNextChoice(ownChoices, opponentChoices);
