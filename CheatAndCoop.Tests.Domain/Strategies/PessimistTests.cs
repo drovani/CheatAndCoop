@@ -4,37 +4,37 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CheatAndCoop.Tests.Domain.Strategies
 {
     [TestClass]
-    public class OptimistTests : StrategyTests<Optimist>
+    public class PessimistTests : StrategyTests<Pessimist>
     {
-        public OptimistTests() : base(Choice.Coop) { }
+        public PessimistTests() : base(Choice.Cheat) { }
 
         [TestMethod]
-        public void ChooseCoop_When_OpponentCheats()
+        public void ChooseCheat_When_OpponentCheats()
         {
             for (int i = 1; i < RoundsToTest; i++)
             {
-                Choice choice = Strategy.GetNextChoice(GameScenarios.AllCoop(i), GameScenarios.AllCheat(i));
-                Assert.AreEqual(Choice.Coop, choice);
+                Choice choice = Strategy.GetNextChoice(GameScenarios.AllCheat(i), GameScenarios.AllCheat(i));
+                Assert.AreEqual(Choice.Cheat, choice);
             }
         }
 
         [TestMethod]
-        public void ChooseCoop_When_OpponentCoops()
+        public void ChooseCheat_When_OpponentCoops()
         {
             for (int i = 1; i < RoundsToTest; i++)
             {
                 Choice choice = Strategy.GetNextChoice(GameScenarios.AllCoop(i), GameScenarios.AllCoop(i));
-                Assert.AreEqual(Choice.Coop, choice);
+                Assert.AreEqual(Choice.Cheat, choice);
             }
         }
 
         [TestMethod]
-        public void ChooseCoop_When_OpponentRandom()
+        public void ChooseCheat_When_OpponentRandom()
         {
             for (int i = 1; i < RoundsToTest; i++)
             {
                 Choice choice = Strategy.GetNextChoice(GameScenarios.RandomChoices(i), GameScenarios.RandomChoices(i));
-                Assert.AreEqual(Choice.Coop, choice);
+                Assert.AreEqual(Choice.Cheat, choice);
             }
         }
     }
