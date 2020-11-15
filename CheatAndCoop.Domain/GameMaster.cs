@@ -6,7 +6,11 @@ namespace CheatAndCoop
     {
         public static GameHistory CommenceGame(Player player1, Player player2, int numberOfRounds = 10, double didItRightChance = 1)
         {
-            var history = new GameHistory();
+            var history = new GameHistory()
+            {
+                Player1 = player1,
+                Player2 = player2
+            };
             var random = new Random();
 
             for (int turn = 0; turn < numberOfRounds; turn++)

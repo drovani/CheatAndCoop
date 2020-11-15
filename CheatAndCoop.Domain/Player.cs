@@ -22,5 +22,10 @@ namespace CheatAndCoop
         {
             return Strategy.GetNextChoice(ownChoices, opponentChoices);
         }
+
+        public override string ToString()
+        {
+            return Strategy.GetType().Name;
+        }
     }
 }
